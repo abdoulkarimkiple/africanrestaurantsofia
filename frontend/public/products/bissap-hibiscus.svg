@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fff3d2"/>
+      <stop offset="1" stop-color="#d9a323"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#bg)"/>
+  <rect x="360" y="150" width="180" height="320" rx="55" fill="#fffaf0" opacity=".9"/>
+  <path d="M380 235h140v190c0 35-28 63-63 63h-14c-35 0-63-28-63-63V235Z" fill="#8e1538"/>
+  <path d="M390 252c47 25 84 25 120 0" fill="none" stroke="#f4c84f" stroke-width="10" stroke-linecap="round"/>
+  <path d="M543 197c40-34 88-4 75 42-37 0-62-12-75-42Z" fill="#7f9d3d"/>
+  <circle cx="450" cy="210" r="18" fill="#f4c84f"/>
+  <text x="450" y="565" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#2a2114">Bissap Hibiscus</text>
+</svg>

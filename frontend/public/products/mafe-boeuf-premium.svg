@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f8ead0"/>
+      <stop offset="1" stop-color="#b58116"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#bg)"/>
+  <ellipse cx="450" cy="330" rx="245" ry="175" fill="#fff8ea"/>
+  <ellipse cx="450" cy="330" rx="185" ry="118" fill="#b86a21"/>
+  <g fill="#5c2b16">
+    <circle cx="380" cy="312" r="38"/>
+    <circle cx="484" cy="288" r="34"/>
+    <circle cx="518" cy="370" r="32"/>
+  </g>
+  <g fill="#f5e2b1">
+    <circle cx="345" cy="392" r="18"/>
+    <circle cx="555" cy="300" r="16"/>
+    <circle cx="440" cy="360" r="15"/>
+  </g>
+  <path d="M268 461c102 42 263 46 371 2" fill="none" stroke="#8b5f13" stroke-width="16" stroke-linecap="round"/>
+  <text x="450" y="565" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#2a2114">Mafe de Boeuf Premium</text>
+</svg>

@@ -65,6 +65,7 @@ async function main() {
       description:
         'Riz jollof parfume, poulet braise, legumes confits et sauce maison.',
       priceCents: 2299,
+      imageUrl: '/products/jollof-rice-royal.svg',
       isFeatured: true,
     },
     {
@@ -74,6 +75,7 @@ async function main() {
       description:
         'Boeuf mijote dans une sauce arachide onctueuse, servi avec riz blanc.',
       priceCents: 2499,
+      imageUrl: '/products/mafe-boeuf-premium.svg',
       isFeatured: true,
     },
     {
@@ -83,6 +85,7 @@ async function main() {
       description:
         'Poulet marine citron-oignons, grille et accompagne de riz parfume.',
       priceCents: 2199,
+      imageUrl: '/products/poulet-yassa-grille.svg',
       isFeatured: false,
     },
     {
@@ -92,6 +95,7 @@ async function main() {
       description:
         'Poisson entier braise, attieke, crudites et sauce piquante.',
       priceCents: 2799,
+      imageUrl: '/products/poisson-braise-attieke.svg',
       isFeatured: true,
     },
     {
@@ -100,6 +104,7 @@ async function main() {
       slug: 'alloco-maison',
       description: 'Plantains murs frits, sauce tomate epicee.',
       priceCents: 799,
+      imageUrl: '/products/alloco-maison.svg',
       isFeatured: false,
     },
     {
@@ -108,6 +113,7 @@ async function main() {
       slug: 'bissap-hibiscus',
       description: "Infusion hibiscus fraiche, menthe et notes d'agrumes.",
       priceCents: 599,
+      imageUrl: '/products/bissap-hibiscus.svg',
       isFeatured: false,
     },
   ]
@@ -126,6 +132,7 @@ async function main() {
         name: product.name,
         description: product.description,
         priceCents: product.priceCents,
+        imageUrl: product.imageUrl,
         isFeatured: product.isFeatured,
       },
       create: {
@@ -134,6 +141,7 @@ async function main() {
         slug: product.slug,
         description: product.description,
         priceCents: product.priceCents,
+        imageUrl: product.imageUrl,
         isFeatured: product.isFeatured,
       },
     })

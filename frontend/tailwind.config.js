@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         brand: {
-          charcoal: '#171310',
-          gold: '#c69249',
-          green: '#2f5d50',
+          charcoal: '#2a2114',
+          gold: '#d9a323',
+          green: '#d9a323',
           clay: '#a45235',
           cream: '#fff8ef',
         },
@@ -19,4 +19,3 @@ export default {
   },
   plugins: [],
 }
-

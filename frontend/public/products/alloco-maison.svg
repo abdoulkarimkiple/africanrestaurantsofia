@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fff9e8"/>
+      <stop offset="1" stop-color="#e2ac25"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#bg)"/>
+  <circle cx="450" cy="315" r="225" fill="#fffaf0"/>
+  <g fill="#d88b16" stroke="#8b5f13" stroke-width="8">
+    <path d="M310 278c65-34 107 36 50 81-63 50-125-39-50-81Z"/>
+    <path d="M434 232c78-10 92 78 18 103-76 26-100-93-18-103Z"/>
+    <path d="M552 315c70 18 57 110-18 104-74-6-62-125 18-104Z"/>
+    <path d="M370 386c74-8 93 74 22 101-74 28-104-92-22-101Z"/>
+  </g>
+  <circle cx="585" cy="245" r="42" fill="#b92f1f"/>
+  <text x="450" y="565" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#2a2114">Alloco Maison</text>
+</svg>

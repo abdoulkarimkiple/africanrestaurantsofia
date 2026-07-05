@@ -16,14 +16,14 @@ export function HomePage() {
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
-            className="rounded-md bg-brand-green px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-charcoal"
+            className="rounded-md bg-brand-gold px-5 py-3 text-sm font-semibold text-brand-charcoal transition hover:bg-[#f4c84f]"
             to="/"
           >
             Site client
           </Link>
           <Link
             className="rounded-md border border-brand-gold px-5 py-3 text-sm font-semibold text-brand-charcoal transition hover:bg-white"
-            to="/"
+            to="/admin"
           >
             Dashboard admin
           </Link>
@@ -32,4 +32,3 @@ export function HomePage() {
     </main>
   )
 }
-
