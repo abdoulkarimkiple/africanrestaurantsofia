@@ -1,0 +1,187 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  CUSTOMER
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PREPARING
+  READY_FOR_DELIVERY
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum PaymentProvider {
+  CASH
+  STRIPE
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  firstName    String
+  lastName     String
+  phone        String?
+  role         UserRole @default(CUSTOMER)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  orders Order[]
+
+  @@index([role])
+  @@map("users")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  imageUrl    String?
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  products Product[]
+
+  @@index([isActive])
+  @@map("categories")
+}
+
+model Product {
+  id                 String   @id @default(cuid())
+  categoryId         String
+  name               String
+  slug               String   @unique
+  description        String
+  priceCents         Int
+  imageUrl           String?
+  isAvailable        Boolean  @default(true)
+  isFeatured         Boolean  @default(false)
+  preparationMinutes Int      @default(25)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  category   Category    @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  orderItems OrderItem[]
+
+  @@index([categoryId])
+  @@index([isAvailable])
+  @@map("products")
+}
+
+model Order {
+  id                   String      @id @default(cuid())
+  customerId           String?
+  orderNumber          String      @unique
+  status               OrderStatus @default(PENDING)
+  customerEmail        String
+  customerFirstName    String
+  customerLastName     String
+  customerPhone        String
+  deliveryAddressLine1 String
+  deliveryAddressLine2 String?
+  deliveryCity         String
+  deliveryState        String      @default("NY")
+  deliveryPostalCode   String
+  subtotalCents        Int
+  deliveryFeeCents     Int         @default(0)
+  taxCents             Int         @default(0)
+  totalCents           Int
+  notes                String?
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
+
+  customer User?       @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  items    OrderItem[]
+  payment  Payment?
+
+  @@index([customerId])
+  @@index([status])
+  @@map("orders")
+}
+
+model OrderItem {
+  id              String   @id @default(cuid())
+  orderId         String
+  productId       String
+  productName     String
+  unitPriceCents  Int
+  quantity        Int
+  totalPriceCents Int
+  notes           String?
+  createdAt       DateTime @default(now())
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_items")
+}
+
+model Payment {
+  id                    String          @id @default(cuid())
+  orderId               String          @unique
+  provider              PaymentProvider
+  method                PaymentMethod
+  status                PaymentStatus   @default(PENDING)
+  amountCents           Int
+  currency              String          @default("USD")
+  providerTransactionId String?
+  paidAt                DateTime?
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+  @@map("payments")
+}
+
+model RestaurantSetting {
+  id                  String   @id @default(cuid())
+  restaurantName      String
+  phone               String
+  email               String
+  addressLine1        String
+  addressLine2        String?
+  city                String
+  state               String   @default("NY")
+  postalCode          String
+  deliveryRadiusMiles Int      @default(5)
+  minimumOrderCents   Int      @default(1500)
+  deliveryFeeCents    Int      @default(499)
+  taxRateBasisPoints  Int      @default(887)
+  isOrderingEnabled   Boolean  @default(true)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("restaurant_settings")
+}

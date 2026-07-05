@@ -90,3 +90,38 @@ npm run lint
 npm run test
 npm run build
 ```
+
+## Prisma et base de donnees
+
+Demarrer PostgreSQL avec Docker:
+
+```bash
+docker compose up -d database
+```
+
+Configurer l'environnement Prisma local:
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+Generer Prisma Client:
+
+```bash
+cd backend
+npm run prisma:generate
+```
+
+Appliquer les migrations:
+
+```bash
+cd backend
+npm run prisma:migrate -- --name init
+```
+
+Executer le seed:
+
+```bash
+cd backend
+npm run db:seed
+```
